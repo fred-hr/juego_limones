@@ -15,7 +15,7 @@ let limonY=0;
 function iniciar(){
     dibujarSuelo();
     dibujarPersonaje();
-    dibujarLimon();
+    aparecerLimon();
 }
 function dibujarSuelo(){
     ctx.fillStyle="blue";
@@ -29,12 +29,10 @@ function dibujarPersonaje(){
 function moverIzquierda(){
     personajeX=personajeX-10;
     actualizarPantalla();
-    detectarColision();
 }
 function moverDerecha(){
     personajeX=personajeX+10;
     actualizarPantalla();
-    detectarColision();
 }
 function actualizarPantalla(){
     limpiarCanvas();
@@ -57,6 +55,16 @@ function bajarLimon(){
 }
 function detectarColision(){
     if(limonX+ANCHO_LIMON>personajeX && limonX<personajeX+ANCHO_PERSONAJE && limonY+ALTURA_LIMON>personajeY && limonY<personajeY+ALTURA_PERSONAJE){
-        alert("ATRAPADO!!");
+     //   alert("ATRAPADO!!");
+        aparecerLimon();
     }
+}
+function probarAleatorio(){
+    let aleatorio=generarAleatorio(10,80);
+    console.log(aleatorio);
+}
+function aparecerLimon(){
+    limonX=generarAleatorio(0,canvas.width-ALTURA_LIMON);
+    limonY=0;
+    actualizarPantalla();
 }
