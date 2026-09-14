@@ -9,3 +9,8 @@ function mostrarSpan(idSpan,valor){
     let componente=document.getElementById(idSpan);
     componente.textContent=valor;
 }
+function cambiarVelocidad(nuevaVelocidad){
+    velocidadCaida=nuevaVelocidad;
+    clearInterval(intervalo);
+    intervalo=setInterval(bajarLimon,velocidadCaida);
+}

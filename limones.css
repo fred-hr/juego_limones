@@ -10,6 +10,7 @@ body {
 .contenedor {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
 }
 
 canvas {
@@ -28,4 +29,20 @@ canvas {
   padding: 10px 16px;
   font-size: 16px;
   cursor: pointer;
+}
+#mensajeGanador {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #0f172a;
+  border: 3px solid #38bdf8;
+  padding: 20px;
+  border-radius: 15px;
+  width: 80%;
+}
+#mensajeGanador img {
+  width: 300px;
+  max-width: 90%;
 }
