@@ -17,7 +17,7 @@ let velocidadCaida=200;
 let intervalo;
 
 function iniciar(){
-    intervalo=setInterval(bajarLimon,velocidadCaida)//1er parametro recibe una funcion, 2do parametro tiempo en milisegundos
+    intervalo = setInterval(bajarLimon,velocidadCaida)//1er parametro recibe una funcion, 2do parametro tiempo en milisegundos
     mostrarSpan("txtVidas",vidas);
     dibujarSuelo();
     dibujarPersonaje();
@@ -66,13 +66,13 @@ function detectarAtrapado(){
         aparecerLimon();
         puntaje=puntaje+1;
         mostrarSpan("txtPuntaje",puntaje);
-        if(puntaje==3){
+        if(puntaje == 3){
             cambiarVelocidad(150);
         }
-        if(puntaje==6){
+        if(puntaje == 6){
             cambiarVelocidad(100);
         }
-        if(puntaje==10){
+        if(puntaje == 10){
             clearInterval(intervalo);
             let mensaje=document.getElementById("mensajeGanador");
             mensaje.style.display="block";
@@ -87,6 +87,7 @@ function detectarPiso(){
         if(vidas==0){
             clearInterval(intervalo);
             alert("GAME OVER")
+            reiniciarJuego();//// Al quedarse sin vidas, detiene el juego y lo reinicia después de aceptar el mensaje
         }else{
             aparecerLimon();
         }
@@ -96,4 +97,26 @@ function aparecerLimon(){
     limonX=generarAleatorio(0,canvas.width-ALTURA_LIMON);
     limonY=0;
     actualizarPantalla();
+}
+//// Detiene el intervalo actual y reinicia las variables del juego a sus valores iniciales
+function reiniciarJuego(){
+    clearInterval(intervalo);
+    puntaje=0;
+    vidas=3;
+    velocidadCaida=200;
+    personajeX=canvas.width/2;
+    mostrarSpan("txtPuntaje",puntaje);
+    mostrarSpan("txtVidas",vidas);
+    let mensaje=document.getElementById("mensajeGanador");
+    mensaje.style.display="none";
+    iniciar();
+}
+//pasua la caida
+function pausarJuego(){
+    clearInterval(intervalo);
+}
+//reanuda la caida
+function continuarJuego(){
+    clearInterval(intervalo);
+    intervalo=setInterval(bajarLimon,velocidadCaida);
 }
