@@ -87,7 +87,7 @@ function detectarPiso(){
         if(vidas==0){
             clearInterval(intervalo);
             alert("GAME OVER")
-            reiniciarJuego();//// Al quedarse sin vidas, detiene el juego y lo reinicia después de aceptar el mensaje
+            reiniciar();// Al quedarse sin vidas, detiene el juego y lo reinicia después de aceptar el mensaje
         }else{
             aparecerLimon();
         }
@@ -99,7 +99,7 @@ function aparecerLimon(){
     actualizarPantalla();
 }
 //// Detiene el intervalo actual y reinicia las variables del juego a sus valores iniciales
-function reiniciarJuego(){
+function reiniciar(){
     clearInterval(intervalo);
     puntaje=0;
     vidas=3;
