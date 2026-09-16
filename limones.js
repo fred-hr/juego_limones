@@ -16,6 +16,7 @@ let vidas=3;
 let velocidadCaida=200;
 let intervalo;
 let personajeVisible=true;
+let pausaJuego=false;
 
 function iniciar(){
     intervalo = setInterval(bajarLimon,velocidadCaida)//1er parametro recibe una funcion, 2do parametro tiempo en milisegundos
@@ -29,17 +30,26 @@ function dibujarSuelo(){
     ctx.fillRect(0,canvas.height-ALTURA_SUELO,canvas.width,ALTURA_SUELO);
 }
 function dibujarPersonaje(){
-    ctx.fillStyle="green";
+    ctx.fillStyle="orange";
     ctx.fillRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
 }
 
 function moverIzquierda(){
-    personajeX=personajeX-20;
-    actualizarPantalla();
+    if(pausaJuego==false){
+        if(personajeX>0){
+            personajeX=personajeX-20;
+        }
+        
+    }
+        actualizarPantalla();
 }
 function moverDerecha(){
-    personajeX=personajeX+20;
-    actualizarPantalla();
+    if(pausaJuego==false){
+        if(personajeX+ANCHO_PERSONAJE<canvas.width){
+            personajeX=personajeX+20;
+        }
+    }
+        actualizarPantalla();
 }
 function actualizarPantalla(){
     limpiarCanvas();
@@ -115,18 +125,40 @@ function reiniciar(){
     mensaje.style.display="none";
     iniciar();
     personajeVisible=true;
+    pausaJuego=false;
 }
 //pasua la caida
 function pausarJuego(){
     clearInterval(intervalo);
+    pausaJuego=true;
 }
 //reanuda la caida
 function continuarJuego(){
     clearInterval(intervalo);
     intervalo=setInterval(bajarLimon,velocidadCaida);
+    pausaJuego=false;
 }
 function desaparecerpersonaje(){
     
     ctx.clearRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
     personajeVisible=false;
 }
+document.addEventListener("keydown",function(evento){
+
+    if(evento.key=="ArrowLeft"){
+
+        evento.preventDefault();
+
+        moverIzquierda();
+
+    }
+
+    if(evento.key=="ArrowRight"){
+
+        evento.preventDefault();
+
+        moverDerecha();
+
+    }
+
+});

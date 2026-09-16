@@ -1,36 +1,149 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Caza Estrellas</title>
+  <title>Juego Atrapar Limones</title>
+
   <link rel="stylesheet" href="limones.css">
+
   <script src="utils.js"></script>
 </head>
+
+
 <body onload="iniciar()">
+
   <div class="contenedor">
-    <h1>Atrapar Limones</h1>
-    <p>Si del cielo te caen limones ..... </p>
-    <h2>Autor: Freddy Canpuzano</h2>
-    <canvas id="areaJuego" width="600"  height="400"></canvas>
+
+    <div class="encabezado">
+
+      <img src="logo.png" class="logoKrakeDev"/>
+
+      <p class="modoArcade">★ ARCADE MODE ★</p>
+
+      <h1>🍋 ATRAPAR LIMONES 🍋</h1>
+
+      <p class="frase">
+        Si del cielo te caen limones... ¡ATRÁPALOS!
+      </p>
+
+      <h2 class="autor">
+        Autor: Freddy Campuzano
+      </h2>
+
+    </div>
+
+
+    <div class="zonaJuego">
+
+      <canvas
+        id="areaJuego"
+        width="600"
+        height="400">
+      </canvas>
+
+    </div>
+
+
     <div class="panel">
-      <p>Puntaje: <span id="txtPuntaje">0</span></p>
-      <p>Vidas: <span id="txtVidas">3</span></p>
-    </div>
-    <div class="botones">
-      <button onclick="moverIzquierda()">Izquierda</button>
-      <button onclick="moverDerecha()">Derecha</button>
-      <button onclick="pausarJuego()">Pausa</button>
-      <button onclick="continuarJuego()">Play</button>
-      <button onclick="reiniciar()">Reiniciar</button>
-      <button onclick="desaparecerpersonaje()">BorrarPersonaje</button>
-    </div>
-    <div>
-      <div id="mensajeGanador" style="display:none;">
-        <h2>!GANASTE!!!!</h2>
-        <P><p>¡Atrapaste los limones... ahora prepara limonada y presume tus reflejos campeones! 🍋🏆</p></P>
-        <img src="ganador.png" width="300">
+
+      <div class="marcador">
+        <span class="icono">🏆</span>
+        <span>PUNTAJE</span>
+        <span id="txtPuntaje" class="numero">0</span>
       </div>
+
+      <div class="marcador">
+        <span class="icono">❤️</span>
+        <span>VIDAS</span>
+        <span id="txtVidas" class="numero">3</span>
+      </div>
+
     </div>
+
+
+    <p class="tituloControles">
+      CONTROLES
+    </p>
+
+
+    <div class="botones">
+
+      <button
+        class="boton movimiento"
+        onclick="moverIzquierda()">
+        ◀ IZQUIERDA
+      </button>
+
+      <button
+        class="boton movimiento"
+        onclick="moverDerecha()">
+        DERECHA ▶
+      </button>
+
+      <button
+        class="boton pausa"
+        onclick="pausarJuego()">
+        ⏸ PAUSA
+      </button>
+
+      <button
+        class="boton play"
+        onclick="continuarJuego()">
+        ▶ PLAY
+      </button>
+
+      <button
+        class="boton reiniciar"
+        onclick="reiniciar()">
+        ↻ REINICIAR
+      </button>
+
+      <button
+        class="boton borrar"
+        onclick="desaparecerpersonaje()">
+        👻 BORRAR PERSONAJE
+      </button>
+
+    </div>
+
+
+    <div class="ayuda">
+
+      <span>◀ ▶ Mover</span>
+
+      <span>⏸ Pausar</span>
+
+      <span>▶ Continuar</span>
+
+    </div>
+
+
+    <div id="mensajeGanador" style="display:none;">
+
+      <div class="trofeo">
+        🏆
+      </div>
+
+      <h2>
+        ¡GANASTE!
+      </h2>
+
+      <p>
+        ¡Atrapaste los limones... ahora prepara limonada
+        y presume tus reflejos campeones! 🍋🏆
+      </p>
+
+      <img
+        src="ganador.png"
+        width="300">
+
+    </div>
+
   </div>
+
+
   <script src="limones.js"></script>
+
 </body>
+
 </html>
