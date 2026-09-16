@@ -2,8 +2,8 @@ let canvas=document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
 
 const ALTURA_SUELO=20;
-const ALTURA_PERSONAJE=60;
-const ANCHO_PERSONAJE=40;
+const ALTURA_PERSONAJE=50;
+const ANCHO_PERSONAJE=30;
 const ANCHO_LIMON=20;
 const ALTURA_LIMON=20;
 
@@ -28,7 +28,7 @@ function dibujarSuelo(){
     ctx.fillRect(0,canvas.height-ALTURA_SUELO,canvas.width,ALTURA_SUELO);
 }
 function dibujarPersonaje(){
-    ctx.fillStyle="yellow";
+    ctx.fillStyle="green";
     ctx.fillRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
 }
 
@@ -86,7 +86,7 @@ function detectarPiso(){
         mostrarSpan("txtVidas",vidas);
         if(vidas==0){
             clearInterval(intervalo);
-            alert("GAME OVER")
+            alert("PERDISTE")
             reiniciar();// Al quedarse sin vidas, detiene el juego y lo reinicia después de aceptar el mensaje
         }else{
             aparecerLimon();
@@ -119,4 +119,8 @@ function pausarJuego(){
 function continuarJuego(){
     clearInterval(intervalo);
     intervalo=setInterval(bajarLimon,velocidadCaida);
+}
+function desaparecerpersonaje(){
+    limpiarCanvas();
+    ctx.clearRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
 }
