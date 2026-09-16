@@ -15,6 +15,7 @@ let puntaje=0;
 let vidas=3;
 let velocidadCaida=200;
 let intervalo;
+let personajeVisible=true;
 
 function iniciar(){
     intervalo = setInterval(bajarLimon,velocidadCaida)//1er parametro recibe una funcion, 2do parametro tiempo en milisegundos
@@ -43,9 +44,12 @@ function moverDerecha(){
 function actualizarPantalla(){
     limpiarCanvas();
     dibujarSuelo();
-    dibujarPersonaje();
+
+    if(personajeVisible==true){
+        dibujarPersonaje();
+    }
     dibujarLimon();
-    
+
 }
 function limpiarCanvas(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -110,6 +114,7 @@ function reiniciar(){
     let mensaje=document.getElementById("mensajeGanador");
     mensaje.style.display="none";
     iniciar();
+    personajeVisible=true;
 }
 //pasua la caida
 function pausarJuego(){
@@ -123,4 +128,5 @@ function continuarJuego(){
 function desaparecerpersonaje(){
     
     ctx.clearRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
+    personajeVisible=false;
 }
