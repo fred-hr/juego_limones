@@ -121,6 +121,6 @@ function continuarJuego(){
     intervalo=setInterval(bajarLimon,velocidadCaida);
 }
 function desaparecerpersonaje(){
-    limpiarCanvas();
+    
     ctx.clearRect(personajeX,personajeY,ANCHO_PERSONAJE,ALTURA_PERSONAJE);
 }
